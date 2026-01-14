@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* Define custom colors */
+:root {
+  --color-dark: #0A0A0F;
+  --color-primary: #3A8DFF;
+  --color-secondary: #6D28D9;
+}
+
+body {
+  background-color: var(--color-dark);
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
