@@ -18,19 +18,19 @@ const contactInfo = [
   {
     icon: <Mail className="w-5 h-5" />,
     title: 'Email',
-    details: ['contact@codewave.com', 'support@codewave.com'],
+    details: ['kodewav3@gmail.com'],
     color: 'from-blue-500 to-cyan-500'
   },
   {
     icon: <Phone className="w-5 h-5" />,
     title: 'Phone',
-    details: ['+1 (555) 123-4567', '+1 (555) 987-6543'],
+    details: ['+233 5529 89253'],
     color: 'from-purple-500 to-pink-500'
   },
   {
     icon: <MapPin className="w-5 h-5" />,
     title: 'Location',
-    details: ['San Francisco, CA', 'Remote Worldwide'],
+    details: ['Accra, Ghana'],
     color: 'from-green-500 to-emerald-500'
   },
   {

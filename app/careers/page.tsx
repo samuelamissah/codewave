@@ -1,176 +1,276 @@
+// app/careers/page.tsx
+
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Users, 
-  Award, 
-  Globe, 
-  Heart, 
-  Clock,
-  DollarSign,
-  Home,
+import {
+  Zap,
+  Sparkles,
+  Target,
+  Mail,
+  Link as LinkIcon,
+  Github,
+  Linkedin,
+  FileText,
+  Send,
+  CheckCircle,
+  Users,
+  Globe,
+  Heart,
   Coffee,
   BookOpen,
-  Zap,
-  Calendar,
-  GraduationCap
+  Cpu,
+  Eye
 } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import { Button } from '@/components/ui/button';
 
-const benefits = [
+// Solo founder/visionary information
+const founderInfo = {
+  name: 'Your Name', // Replace with your actual name
+  role: 'Founder & Lead Developer',
+  bio: 'A passionate developer and visionary with [X] years of experience in [Your Specialties]. Building CodeWave Solutions from the ground up to deliver exceptional digital products.',
+  expertise: ['Full-Stack Development', 'System Architecture', 'UI/UX Design', 'DevOps', 'Project Strategy'],
+  links: {
+    github: '#',
+    linkedin: '#',
+    portfolio: '#',
+    email: 'founder@codewave.com'
+  }
+};
+
+// Future roles you might hire for (when ready)
+const futureRoles = [
   {
-    icon: <DollarSign className="w-6 h-6" />,
-    title: 'Competitive Salary',
-    description: 'Industry-leading compensation with regular reviews'
+    title: 'Senior Frontend Developer',
+    description: 'Will specialize in building beautiful, performant user interfaces with React/Next.js.',
+    skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion']
   },
   {
-    icon: <Home className="w-6 h-6" />,
-    title: 'Remote First',
-    description: 'Work from anywhere in the world'
+    title: 'Backend/DevOps Engineer',
+    description: 'Will focus on building scalable APIs, databases, and deployment infrastructure.',
+    skills: ['Node.js', 'Python', 'PostgreSQL', 'AWS/Azure', 'Docker', 'CI/CD']
   },
   {
-    icon: <Award className="w-6 h-6" />,
-    title: 'Career Growth',
-    description: 'Clear progression paths and mentorship'
-  },
-  {
-    icon: <BookOpen className="w-6 h-6" />,
-    title: 'Learning Budget',
-    description: '$5,000 annual budget for courses and conferences'
-  },
-  {
-    icon: <Coffee className="w-6 h-6" />,
-    title: 'Flexible Hours',
-    description: 'Work when you\'re most productive'
-  },
-  {
-    icon: <Globe className="w-6 h-6" />,
-    title: 'Global Team',
-    description: 'Work with talented people worldwide'
+    title: 'UI/UX Designer',
+    description: 'Will craft user-centered designs and design systems for client projects.',
+    skills: ['Figma', 'User Research', 'Prototyping', 'Design Systems', 'Accessibility']
   }
 ];
 
-const openPositions = [
+// Culture/vision points
+const visionPoints = [
   {
-    id: 1,
-    title: 'Senior Full-Stack Developer',
-    department: 'Engineering',
-    type: 'Full-time',
-    location: 'Remote',
-    experience: '5+ years',
-    description: 'Lead development of enterprise-grade applications using modern tech stack.'
+    icon: <Target className="w-6 h-6" />,
+    title: 'Quality Over Quantity',
+    description: 'We take on fewer projects to ensure each one receives meticulous attention and exceeds expectations.'
   },
   {
-    id: 2,
-    title: 'DevOps Engineer',
-    department: 'Infrastructure',
-    type: 'Full-time',
-    location: 'Remote',
-    experience: '3+ years',
-    description: 'Build and maintain scalable cloud infrastructure and CI/CD pipelines.'
+    icon: <Sparkles className="w-6 h-6" />,
+    title: 'Innovation-First',
+    description: 'We constantly explore and integrate cutting-edge technologies to solve problems in novel ways.'
   },
   {
-    id: 3,
-    title: 'UI/UX Designer',
-    department: 'Design',
-    type: 'Full-time',
-    location: 'Remote',
-    experience: '4+ years',
-    description: 'Create beautiful, user-centered interfaces for enterprise applications.'
+    icon: <Heart className="w-6 h-6" />,
+    title: 'Direct Impact',
+    description: 'Every team member will see their work directly shape client success and company direction.'
   },
   {
-    id: 4,
-    title: 'Project Manager',
-    department: 'Delivery',
-    type: 'Full-time',
-    location: 'Remote',
-    experience: '5+ years',
-    description: 'Lead project delivery and ensure client success from start to finish.'
+    icon: <Coffee className="w-6 h-6" />,
+    title: 'Autonomy & Trust',
+    description: 'Future team members will own their work with flexibility and minimal bureaucracy.'
   }
 ];
 
 export default function CareersPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    roleInterest: '',
+    message: '',
+    portfolio: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        roleInterest: '',
+        message: '',
+        portfolio: ''
+      });
+
+      // Reset status after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    }, 1500);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section */}
+      {/* Hero Section - Focus on Vision */}
       <section className="relative py-20 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-900/10 via-transparent to-secondary-900/10" />
         <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="text-center max-w-4xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-8"
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/30 mb-6">
                 <Zap className="w-4 h-4 text-primary-500" />
-                <span className="text-sm font-medium gradient-text">Were Hiring</span>
+                <span className="text-sm font-medium gradient-text">Founder's Vision</span>
               </div>
-              
+
               <h1 className="text-5xl md:text-7xl font-bold mb-6">
-                <span className="gradient-text">Build</span> The Future
+                <span className="gradient-text">Join the</span>
                 <br />
-                <span className="text-white">With Us</span>
+                <span className="text-white">Journey</span>
               </h1>
-              
-              <p className="text-xl text-gray-300 mb-8">
-                Join a team of passionate innovators creating cutting-edge solutions 
-                for the world's most ambitious companies.
+
+              <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                CodeWave Solutions is being built from the ground up with a focus on excellence,
+                innovation, and meaningful impact. While we're not actively hiring yet,
+                we're always interested in connecting with exceptional talent who share our vision.
               </p>
-              
-              <div className="flex flex-wrap gap-4">
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild variant="default" size="lg">
-                  <a href="#positions">View Open Roles</a>
+                  <a href="#vision">
+                    <Eye className="w-5 h-5 mr-2" />
+                    Explore Our Vision
+                  </a>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <a href="#culture">Our Culture</a>
+                  <a href="#connect">
+                    <Mail className="w-5 h-5 mr-2" />
+                    Express Interest
+                  </a>
                 </Button>
               </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {[
-                { icon: <Users />, value: '50+', label: 'Global Team' },
-                { icon: <Globe />, value: '15+', label: 'Countries' },
-                { icon: <Award />, value: '95%', label: 'Retention Rate' },
-                { icon: <Heart />, value: '4.9', label: 'Team Satisfaction' },
-              ].map((stat, index) => (
-                <div key={index} className="corporate-card p-6 text-center">
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary-500/10 flex items-center justify-center">
-                    <div className="text-primary-500">
-                      {stat.icon}
-                    </div>
-                  </div>
-                  <div className="text-3xl font-bold gradient-text">{stat.value}</div>
-                  <div className="text-gray-400 text-sm mt-1">{stat.label}</div>
-                </div>
-              ))}
             </motion.div>
           </div>
         </Container>
       </section>
 
-      {/* Culture & Benefits */}
-      <section id="culture" className="py-20">
+      {/* Founder Section */}
+      <section className="py-20">
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                The <span className="gradient-text">Visionary</span>
+                <br />
+                <span className="text-white">Behind the Mission</span>
+              </h2>
+
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-bold mb-2">{founderInfo.name}</h3>
+                  <p className="text-primary-400 mb-4">{founderInfo.role}</p>
+                  <p className="text-gray-300">{founderInfo.bio}</p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold mb-3">Areas of Expertise</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {founderInfo.expertise.map((skill, index) => (
+                      <span
+                        key={index}
+                        className="px-4 py-2 bg-white/5 rounded-full text-sm border border-white/10"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex space-x-4 pt-4">
+                  <a
+                    href={founderInfo.links.github}
+                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-primary-500/30 transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a
+                    href={founderInfo.links.linkedin}
+                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-primary-500/30 transition-colors"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a
+                    href={founderInfo.links.portfolio}
+                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-primary-500/30 transition-colors"
+                  >
+                    <FileText className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              {/* Placeholder for founder image/avatar */}
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary-500/20 to-secondary-500/20 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
+                    <Cpu className="w-16 h-16 text-white" />
+                  </div>
+                  <p className="text-gray-400">Founder & Vision</p>
+                </div>
+              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-primary-500/10 blur-2xl -z-10" />
+              <div className="absolute -bottom-6 -left-6 w-40 h-40 rounded-full bg-secondary-500/10 blur-2xl -z-10" />
+            </motion.div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Vision & Future Culture */}
+      <section id="vision" className="py-20 bg-dark-800/50">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Why <span className="gradient-text">CodeWave</span>
+              Building a <span className="gradient-text">Culture</span> of
+              <br />
+              <span className="text-white">Excellence</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-              We're building more than software—we're building a workplace where 
-              exceptional people can do their best work.
+              This is the environment we're committed to creating as we grow
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-            {benefits.map((benefit, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+            {visionPoints.map((point, index) => (
               <motion.div
-                key={benefit.title}
+                key={point.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -179,112 +279,199 @@ export default function CareersPage() {
               >
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500/20 to-secondary-500/20 flex items-center justify-center mb-6">
                   <div className="text-primary-500">
-                    {benefit.icon}
+                    {point.icon}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
-                <p className="text-gray-400">{benefit.description}</p>
+                <h3 className="text-xl font-bold mb-3">{point.title}</h3>
+                <p className="text-gray-400">{point.description}</p>
               </motion.div>
             ))}
           </div>
 
-          {/* Hiring Process */}
-          <div className="corporate-card p-12 mb-20">
+          {/* Future Roles Preview */}
+          <div className="corporate-card p-12">
             <h3 className="text-3xl font-bold text-center mb-12">
-              Our <span className="gradient-text">Hiring Process</span>
+              <span className="gradient-text">Future</span> Opportunities
             </h3>
-            
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                { step: '01', title: 'Application', description: 'Submit your resume and portfolio' },
-                { step: '02', title: 'Screening', description: 'Initial call with our talent team' },
-                { step: '03', title: 'Technical', description: 'Skills assessment and interviews' },
-                { step: '04', title: 'Offer', description: 'Welcome to the team!' },
-              ].map((process, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center text-2xl font-bold">
-                    {process.step}
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {futureRoles.map((role, index) => (
+                <div key={index} className="text-center group">
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary-500/10 to-secondary-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Users className="w-8 h-8 text-primary-500" />
                   </div>
-                  <h4 className="text-xl font-bold mb-2">{process.title}</h4>
-                  <p className="text-gray-400">{process.description}</p>
+                  <h4 className="text-xl font-bold mb-3">{role.title}</h4>
+                  <p className="text-gray-400 text-sm mb-4">{role.description}</p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {role.skills.slice(0, 3).map((skill, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 bg-white/5 rounded-full text-xs text-gray-300"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-xs text-primary-400">
+                      Future consideration
+                    </span>
+                  </div>
                 </div>
               ))}
+            </div>
+
+            <div className="text-center mt-12 pt-8 border-t border-white/10">
+              <p className="text-gray-400 mb-6">
+                These represent the types of roles we envision creating as our company grows.
+              </p>
+              <Button asChild variant="outline">
+                <a href="#connect">
+                  <BookOpen className="w-5 h-5 mr-2" />
+                  Express Early Interest
+                </a>
+              </Button>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Open Positions */}
-      <section id="positions" className="py-20 bg-dark-800/50">
+      {/* Expression of Interest Form */}
+      <section id="connect" className="py-20">
         <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Open <span className="gradient-text">Positions</span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-              Explore opportunities to join our growing team
-            </p>
-          </div>
+          <div className="max-w-2xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="glass-card p-12"
+            >
+              <div className="text-center mb-10">
+                <h2 className="text-4xl font-bold mb-4">
+                  <span className="gradient-text">Express</span> Interest
+                </h2>
+                <p className="text-gray-400">
+                  Share your details, and we'll keep you in mind for future opportunities.
+                </p>
+              </div>
 
-          <div className="space-y-6 max-w-4xl mx-auto">
-            {openPositions.map((position, index) => (
-              <motion.div
-                key={position.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="glass-card p-8 hover-lift hover:border-primary-500/30"
-              >
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-4">
-                      <h3 className="text-2xl font-bold">{position.title}</h3>
-                      <span className="px-3 py-1 bg-primary-500/10 text-primary-300 rounded-full text-sm">
-                        {position.department}
-                      </span>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {submitStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-green-500/10 border border-green-500/30 rounded-lg p-4 flex items-center"
+                  >
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <div>
+                      <p className="font-medium text-green-400">Interest registered!</p>
+                      <p className="text-sm text-green-300">
+                        We'll reach out when opportunities align with our growth.
+                      </p>
                     </div>
-                    
-                    <div className="flex flex-wrap gap-4 mb-4">
-                      <div className="flex items-center text-gray-400">
-                        <Clock className="w-4 h-4 mr-2" />
-                        {position.type}
-                      </div>
-                      <div className="flex items-center text-gray-400">
-                        <Globe className="w-4 h-4 mr-2" />
-                        {position.location}
-                      </div>
-                      <div className="flex items-center text-gray-400">
-                        <GraduationCap className="w-4 h-4 mr-2" />
-                        {position.experience}
-                      </div>
-                    </div>
-                    
-                    <p className="text-gray-300">{position.description}</p>
+                  </motion.div>
+                )}
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      Your Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                      placeholder="Alex Johnson"
+                    />
                   </div>
-                  
-                  <Button asChild variant="default">
-                    <a href={`/careers/apply/${position.id}`}>Apply Now</a>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                      placeholder="alex@example.com"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">
+                    Role of Interest
+                  </label>
+                  <select
+                    name="roleInterest"
+                    value={formData.roleInterest}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                  >
+                    <option value="">Select a future role of interest</option>
+                    <option value="frontend">Frontend Development</option>
+                    <option value="backend">Backend/DevOps</option>
+                    <option value="design">UI/UX Design</option>
+                    <option value="other">Other/General Interest</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">
+                    Portfolio/GitHub Link
+                  </label>
+                  <input
+                    type="url"
+                    name="portfolio"
+                    value={formData.portfolio}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                    placeholder="https://github.com/yourusername"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">
+                    Message (Optional)
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
+                    placeholder="Tell us about your skills, interests, or why you're drawn to our vision..."
+                  />
+                </div>
+
+                <div className="flex items-center justify-between pt-4">
+                  <div className="text-sm text-gray-400">
+                    * Required fields
+                  </div>
+                  <Button
+                    type="submit"
+                    variant="default"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit Interest'}
+                    <Send className="w-5 h-5 ml-2" />
                   </Button>
                 </div>
-              </motion.div>
-            ))}
-          </div>
 
-          {/* No matching role? */}
-          <div className="text-center mt-20">
-            <div className="glass-card p-12 max-w-3xl mx-auto">
-              <h3 className="text-3xl font-bold mb-6">
-                Don&apos;t See Your Role?
-              </h3>
-              <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-                We&apso;re always looking for exceptional talent. Send us your resume 
-                and tell us how you can contribute to our mission.
-              </p>
-              <Button asChild variant="outline" size="lg">
-                <a href="mailto:careers@codewave.com">Send General Application</a>
-              </Button>
-            </div>
+                <div className="text-center pt-8 border-t border-white/10">
+                  <p className="text-sm text-gray-500">
+                    <Mail className="w-4 h-4 inline mr-2" />
+                    Or email directly: {founderInfo.links.email}
+                  </p>
+                </div>
+              </form>
+            </motion.div>
           </div>
         </Container>
       </section>

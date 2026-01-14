@@ -102,23 +102,23 @@ export default function About() {
                 
                 <div className="space-y-4 pl-4 border-l-2 border-primary-500/30">
                   <p className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-primary-500 mr-3 mt-1 flex-shrink-0" />
-                    We create <span className="font-medium text-white mx-1">fast, modern, and responsive websites</span> that help your brand stand out.
+                    <CheckCircle className="w-5 h-5 text-primary-500 mr-3 mt-1 shrink-0" />
+                    We create fast, modern, and responsive websites that help your brand stand out.
                   </p>
                   
                   <p className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-primary-500 mr-3 mt-1 flex-shrink-0" />
-                    We build <span className="font-medium text-white mx-1">custom software</span> that solves real problems and streamlines operations.
+                    <CheckCircle className="w-5 h-5 text-primary-500 mr-3 mt-1 shrink-0" />
+                    We build custom software that solves real problems and streamlines operations.
                   </p>
                   
                   <p className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-primary-500 mr-3 mt-1 flex-shrink-0" />
-                    We design <span className="font-medium text-white mx-1">dashboards and data systems</span> that help you make smarter decisions.
+                    <CheckCircle className="w-5 h-5 text-primary-500 mr-3 mt-1 shrink-0" />
+                    We design dashboards and data systems that help you make smarter decisions.
                   </p>
                   
                   <p className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-primary-500 mr-3 mt-1 flex-shrink-0" />
-                    We automate your <span className="font-medium text-white mx-1">workflows</span> so you can work faster and grow bigger.
+                    <CheckCircle className="w-5 h-5 text-primary-500 mr-3 mt-1 shrink-0" />
+                    We automate your workflows so you can work faster and grow bigger.
                   </p>
                 </div>
                 
@@ -142,14 +142,14 @@ export default function About() {
             <div className="flex flex-wrap gap-4">
               <Button asChild variant="default">
                 <a href="#contact" className="inline-flex items-center gap-2">
-                  <Rocket className="w-5 h-5" />
+                
                   Start Your Journey
                 </a>
               </Button>
                 
               <Button asChild variant="outline">
                 <a href="#services" className="inline-flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5" />
+           
                   View Our Services
                 </a>
               </Button>
