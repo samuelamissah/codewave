@@ -35,56 +35,56 @@ const projectCategories = [
 const featuredProjects = [
   {
     id: 1,
-    title: 'Global Banking Platform',
-    category: 'FinTech',
-    description: 'A secure, scalable banking platform serving 50,000+ users with real-time transaction processing.',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'AWS', 'Docker'],
-    image: '/api/placeholder/600/400',
-    client: 'Fortune 500 Bank',
+    title: 'Department of Urban Roads Walkability App',
+    category: 'Engineering',
+    description:'A mobile application that helps users navigate and walk more safely on urban roads by providing real-time walkability scores and safety recommendations.',
+    technologies: ['NextJS', 'Node.js', 'PostgreSQL'],
+    image: '/DUR-1.jpg',
+    client: 'Department of Urban Roads',
     duration: '6 months',
     results: [
       '99.9% uptime',
       '50% faster transactions',
       'Enhanced security compliance'
     ],
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: 'https://walkability-dur.vercel.app/',
+    githubUrl: 'https://github.com/samuelamissah/walkability_dur',
     featured: true
   },
   {
     id: 2,
-    title: 'Healthcare AI Assistant',
-    category: 'Healthcare',
-    description: 'AI-powered diagnostic tool that helps doctors analyze medical images with 95% accuracy.',
-    technologies: ['Python', 'TensorFlow', 'FastAPI', 'React Native', 'MongoDB'],
-    image: '/api/placeholder/600/400',
-    client: 'Medical Research Institute',
+    title: 'Department of Urban Roads Human Resource Management System',
+    category: 'Engineering',
+    description: 'A human resource management system that streamlines employee onboarding, performance tracking, and leave management.',
+    technologies: ['NextJS', 'Supabase', 'Typescript'],
+    image: '/DUR-1.jpg',
+    client: 'Department of Urban Roads',
     duration: '8 months',
     results: [
       '95% diagnostic accuracy',
       '30% faster diagnosis',
       'HIPAA compliant'
     ],
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: 'https://dur-hr.vercel.app/',
+    githubUrl: 'https://github.com/samuelamissah/dur_hr',
     featured: true
   },
   {
     id: 3,
-    title: 'E-commerce Superstore',
-    category: 'E-commerce',
-    description: 'Scalable e-commerce platform handling 10,000+ daily transactions with personalized recommendations.',
-    technologies: ['Next.js', 'TypeScript', 'GraphQL', 'Redis', 'Kubernetes'],
-    image: '/api/placeholder/600/400',
-    client: 'Retail Giant',
-    duration: '4 months',
+    title: 'Ministry of Finance Expenditure Tracking System',
+    category: 'FinTech',
+    description: 'A web application that helps the Ministry of Finance track and analyze expenditures, providing insights for budget management.',
+    technologies: ['Next.js', 'TypeScript', 'ChartJS', 'PostgreSQL'],
+    image: '/MFI-1.jpg',
+    client: 'Ministry of Finance',
+    duration: '13 months',
     results: [
       '40% increase in conversions',
       'Sub-second load times',
       'Seamless mobile experience'
     ],
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: 'https://www.mofetonline.com/',
+    githubUrl: 'https://github.com/owususamuel/bism-next',
     featured: true
   }
 ];
@@ -93,54 +93,52 @@ const allProjects = [
   ...featuredProjects,
   {
     id: 4,
-    title: 'Supply Chain Management',
-    category: 'Enterprise Solutions',
-    description: 'End-to-end supply chain optimization platform with real-time tracking and predictive analytics.',
-    technologies: ['Java', 'Spring Boot', 'React', 'PostgreSQL', 'RabbitMQ'],
-    image: '/api/placeholder/600/400',
-    client: 'Manufacturing Corporation',
-    duration: '9 months',
+    title: 'Premium Catering Services',
+    category: 'Food Website',
+    description: 'A premium catering services website that allows users to order their food, as well as view the restaurant menu.',
+    technologies: ['React-Vite', 'TypeScript', 'ThreeJS'],
+    image: '/Premium Catering Services.jpg',
+    client: 'Premium Catering Services',
+    duration: '2 months',
     results: [
       '25% cost reduction',
       'Real-time tracking',
       'Automated inventory'
     ],
-    liveUrl: '#',
-    githubUrl: '#'
+    liveUrl: 'https://elegant-eats-ten.vercel.app/',
+    githubUrl: 'https://github.com/samuelamissah/elegant_eats'
   },
   {
     id: 5,
-    title: 'Fitness Mobile App',
-    category: 'Mobile Apps',
-    description: 'Personalized fitness coaching app with AI-powered workout plans and progress tracking.',
-    technologies: ['React Native', 'Node.js', 'MongoDB', 'Firebase', 'Redux'],
-    image: '/api/placeholder/600/400',
-    client: 'Fitness Startup',
+    title: 'Sustainable Development Growth',
+    category: 'Environmental',
+    description: 'A web application that helps ghanaian citizens track and monitor the 17 sustainable development growth.',
+    technologies: ['NextJS', 'Typescript', 'ChartJS'],
+    image: '/Sustainable Development Growth.jpg',
+    client: 'Ghanaian Citizen',
     duration: '5 months',
     results: [
-      '100,000+ downloads',
-      '4.8 star rating',
       'Social features'
     ],
-    liveUrl: '#',
-    githubUrl: '#'
+    liveUrl: 'https://sdg.mofetonline.com/',
+    githubUrl: 'https://github.com/owususamuel/sdg-website'
   },
   {
     id: 6,
-    title: 'Data Analytics Dashboard',
-    category: 'Enterprise Solutions',
-    description: 'Real-time business intelligence dashboard for enterprise decision making.',
-    technologies: ['Vue.js', 'Python', 'D3.js', 'Elasticsearch', 'Docker'],
-    image: '/api/placeholder/600/400',
-    client: 'Technology Company',
+    title: "Ghana's Most Beautiful",
+    category: 'Website',
+    description: 'Website for Asakia. GMD First Runner Up.',
+    technologies: ['NEXTJS','ThreeJS'],
+    image: '/Ghana\'s Most Beautiful.jpg',
+    client: 'Ghanaian Citizen',
     duration: '3 months',
     results: [
       'Real-time insights',
       'Custom reporting',
       'Team collaboration'
     ],
-    liveUrl: '#',
-    githubUrl: '#'
+    liveUrl: 'https://asakia-gmb.vercel.app/',
+    githubUrl: 'https://github.com/samuelamissah/asakia-gmb'
   }
 ];
 

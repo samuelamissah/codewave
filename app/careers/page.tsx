@@ -136,7 +136,7 @@ export default function CareersPage() {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/30 mb-6">
                 <Zap className="w-4 h-4 text-primary-500" />
-                <span className="text-sm font-medium gradient-text">Founder's Vision</span>
+                <span className="text-sm font-medium gradient-text">Founder&apos;s Vision</span>
               </div>
 
               <h1 className="text-5xl md:text-7xl font-bold mb-6">
@@ -147,8 +147,8 @@ export default function CareersPage() {
 
               <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
                 CodeWave Solutions is being built from the ground up with a focus on excellence,
-                innovation, and meaningful impact. While we're not actively hiring yet,
-                we're always interested in connecting with exceptional talent who share our vision.
+                innovation, and meaningful impact. While we&apos;re not actively hiring yet,
+                we&apos;re always interested in connecting with exceptional talent who share our vision.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -263,7 +263,7 @@ export default function CareersPage() {
               <span className="text-white">Excellence</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-              This is the environment we're committed to creating as we grow
+              This is the environment we&apos;re committed to creating as we grow
             </p>
           </div>
 
@@ -351,7 +351,7 @@ export default function CareersPage() {
                   <span className="gradient-text">Express</span> Interest
                 </h2>
                 <p className="text-gray-400">
-                  Share your details, and we'll keep you in mind for future opportunities.
+                  Share your details, and we&apos;ll keep you in mind for future opportunities.
                 </p>
               </div>
 
@@ -366,7 +366,7 @@ export default function CareersPage() {
                     <div>
                       <p className="font-medium text-green-400">Interest registered!</p>
                       <p className="text-sm text-green-300">
-                        We'll reach out when opportunities align with our growth.
+                        We&apos;ll reach out when opportunities align with our growth.
                       </p>
                     </div>
                   </motion.div>
@@ -409,6 +409,7 @@ export default function CareersPage() {
                     Role of Interest
                   </label>
                   <select
+                    title='Role of Interest'
                     name="roleInterest"
                     value={formData.roleInterest}
                     onChange={handleChange}

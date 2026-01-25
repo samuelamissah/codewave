@@ -87,9 +87,9 @@ export default function Hero() {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-8 border-t border-white/10"
           >
             {[
-              { value: '200+', label: 'Projects Delivered' },
-              { value: '99%', label: 'Client Satisfaction' },
-              { value: '50+', label: 'Expert Team' },
+              { value: '17', label: 'Projects Delivered' },
+              { value: '80%', label: 'Client Satisfaction' },
+              { value: '5', label: 'Expert Team' },
               { value: '24/7', label: 'Support' },
             ].map((stat, index) => (
               <div key={index} className="text-center">
