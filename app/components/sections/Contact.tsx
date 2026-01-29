@@ -62,14 +62,17 @@ export default function Contact() {
     setSubmitStatus('idle');
     
     try {
-      const response = await fetch('https://formspree.io/f/mqakpzoz', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          ...formData,
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          service: formData.service,
+          message: formData.message,
           _subject: `New Contact Form Submission from ${formData.name}`,
         })
       });
@@ -82,7 +85,12 @@ export default function Contact() {
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setSubmitStatus('error');
+      // Check if it's a network error
+      if (error instanceof TypeError && error.message === 'Failed to fetch') {
+        setSubmitStatus('error');
+      } else {
+        setSubmitStatus('error');
+      }
     } finally {
       setIsSubmitting(false);
       // Reset status after 5 seconds

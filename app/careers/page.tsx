@@ -15,6 +15,7 @@ import {
   FileText,
   Send,
   CheckCircle,
+  AlertCircle,
   Users,
   Globe,
   Heart,
@@ -100,14 +101,17 @@ export default function CareersPage() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://formspree.io/f/mqakpzoz', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          ...formData,
+          name: formData.name,
+          email: formData.email,
+          roleInterest: formData.roleInterest,
+          portfolio: formData.portfolio,
+          message: formData.message,
           _subject: `New Career Interest: ${formData.roleInterest} from ${formData.name}`,
         })
       });
@@ -126,7 +130,12 @@ export default function CareersPage() {
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setSubmitStatus('error');
+      // Check if it's a network error
+      if (error instanceof TypeError && error.message === 'Failed to fetch') {
+        setSubmitStatus('error');
+      } else {
+        setSubmitStatus('error');
+      }
     } finally {
       setIsSubmitting(false);
       // Reset status after 5 seconds
@@ -386,6 +395,22 @@ export default function CareersPage() {
                       <p className="font-medium text-green-400">Interest registered!</p>
                       <p className="text-sm text-green-300">
                         We&apos;ll reach out when opportunities align with our growth.
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 flex items-center"
+                  >
+                    <AlertCircle className="w-5 h-5 text-red-500 mr-3" />
+                    <div>
+                      <p className="font-medium text-red-400">Submission failed</p>
+                      <p className="text-sm text-red-300">
+                        Please check your connection and try again, or email us directly.
                       </p>
                     </div>
                   </motion.div>
