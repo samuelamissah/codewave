@@ -13,6 +13,7 @@ import {
   Zap,
   Cpu
 } from 'lucide-react';
+import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import { Button } from '@/components/ui/button';
 
@@ -141,17 +142,15 @@ export default function About() {
 
             <div className="flex flex-wrap gap-4">
               <Button asChild variant="default">
-                <a href="#contact" className="inline-flex items-center gap-2">
-                
+                <Link href="/contact" className="inline-flex items-center gap-2">
                   Start Your Journey
-                </a>
+                </Link>
               </Button>
                 
               <Button asChild variant="outline">
-                <a href="#services" className="inline-flex items-center gap-2">
-           
+                <Link href="/services" className="inline-flex items-center gap-2">
                   View Our Services
-                </a>
+                </Link>
               </Button>
             </div>
           </motion.div>

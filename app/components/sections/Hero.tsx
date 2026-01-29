@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import {Button} from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import SimpleBackground from '../three/SimpleBackground';
 
 ;
@@ -59,23 +60,17 @@ export default function Hero() {
             transition={{ delay: 0.6, duration: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10"
           >
-            <Button 
-              onClick={() => window.location.href = '/contact'}
-              variant="default"
-              size="lg"
-            >
-              Start Your Project
-              <ArrowRight className="ml-2 w-5 h-5" />
+            <Button asChild variant="default" size="lg">
+              <Link href="/contact">
+                Start Your Project
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
             </Button>
-          
-              Start Your Project
             
-            <Button 
-              onClick={() => window.location.href = '#services'}
-              variant="outline" 
-              size="lg"
-            >
-              Explore Services
+            <Button asChild variant="outline" size="lg">
+              <Link href="/services">
+                Explore Services
+              </Link>
             </Button>
           </motion.div>
 

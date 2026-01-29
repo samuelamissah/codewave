@@ -28,15 +28,15 @@ import { Button } from '@/components/ui/button';
 
 // Solo founder/visionary information
 const founderInfo = {
-  name: 'Your Name', // Replace with your actual name
+  name: 'Temi Kojo', 
   role: 'Founder & Lead Developer',
-  bio: 'A passionate developer and visionary with [X] years of experience in [Your Specialties]. Building CodeWave Solutions from the ground up to deliver exceptional digital products.',
-  expertise: ['Full-Stack Development', 'System Architecture', 'UI/UX Design', 'DevOps', 'Project Strategy'],
+  bio: 'A passionate developer and visionary with 5+ years of experience in frontend development. Building CodeWave Solutions from the ground up to deliver exceptional digital products.',
+  expertise: ['Full-Stack Development', 'Data Analytics','Project Strategy'],
   links: {
-    github: '#',
-    linkedin: '#',
-    portfolio: '#',
-    email: 'founder@codewave.com'
+    github: 'https://github.com/samuelamissah',
+    linkedin: 'https://linkedin.com/in/samuelamissah',
+    portfolio: 'https://potfoli-test.vercel.app',
+    email: 'kodewav3@gmail.com'
   }
 };
 
@@ -97,22 +97,41 @@ export default function CareersPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        roleInterest: '',
-        message: '',
-        portfolio: ''
+    try {
+      const response = await fetch('https://formspree.io/f/mqakpzoz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `New Career Interest: ${formData.roleInterest} from ${formData.name}`,
+        })
       });
 
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          roleInterest: '',
+          message: '',
+          portfolio: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
       // Reset status after 5 seconds
       setTimeout(() => setSubmitStatus('idle'), 5000);
-    }, 1500);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -413,7 +432,7 @@ export default function CareersPage() {
                     name="roleInterest"
                     value={formData.roleInterest}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-white/5 border text-black border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
                   >
                     <option value="">Select a future role of interest</option>
                     <option value="frontend">Frontend Development</option>

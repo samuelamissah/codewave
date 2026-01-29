@@ -9,7 +9,11 @@ import {
   Clock,
   Send,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  Twitter,
+  Linkedin,
+  Github,
+  Instagram
 } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import { Button } from '@/components/ui/button';
@@ -55,16 +59,35 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://formspree.io/f/mqakpzoz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `New Contact Form Submission from ${formData.name}`,
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', company: '', service: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
       setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', company: '', service: '', message: '' });
-      
       // Reset status after 5 seconds
       setTimeout(() => setSubmitStatus('idle'), 5000);
-    }, 1500);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -125,13 +148,21 @@ export default function Contact() {
             <div className="glass-card p-6">
               <h4 className="font-semibold mb-4">Follow Us</h4>
               <div className="flex space-x-4">
-                {['Twitter', 'LinkedIn', 'GitHub', 'Instagram'].map((social) => (
+                {[
+                  { icon: <Twitter className="w-5 h-5" />, href: 'https://twitter.com/kodewav3', label: 'Twitter' },
+                  { icon: <Linkedin className="w-5 h-5" />, href: 'https://linkedin.com/in/samuelamissah', label: 'LinkedIn' },
+                  { icon: <Github className="w-5 h-5" />, href: 'https://github.com/samuelamissah', label: 'GitHub' },
+                  { icon: <Instagram className="w-5 h-5" />, href: 'https://instagram.com/codewave', label: 'Instagram' },
+                ].map((social) => (
                   <a
-                    key={social}
-                    href="#"
-                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-primary-500/30 transition-colors"
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-primary-500/30 transition-colors text-gray-400 hover:text-primary-500"
+                    title={social.label}
                   >
-                    <span className="text-gray-400 text-sm font-medium">{social.charAt(0)}</span>
+                    {social.icon}
                   </a>
                 ))}
               </div>
