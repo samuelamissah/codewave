@@ -13,7 +13,8 @@ import {
   Twitter,
   Linkedin,
   Github,
-  Instagram
+  Instagram,
+  MessageCircle
 } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import { Button } from '@/components/ui/button';
@@ -28,7 +29,7 @@ const contactInfo = [
   {
     icon: <Phone className="w-5 h-5" />,
     title: 'Phone',
-    details: ['+233 5529 89253'],
+    details: ['+233 50 559 3485'],
     color: 'from-purple-500 to-pink-500'
   },
   {
@@ -42,6 +43,12 @@ const contactInfo = [
     title: 'Hours',
     details: ['Mon-Fri: 9AM-6PM PST', '24/7 Emergency Support'],
     color: 'from-orange-500 to-amber-500'
+  },
+  {
+    icon: <MessageCircle className="w-5 h-5" />,
+    title: 'Chat',
+    details: ['Chat with us on WhatsApp... +233 50 559 3485'],
+    color: 'from-yellow-500 to-lime-500'
   }
 ];
 
