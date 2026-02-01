@@ -11,7 +11,8 @@ import {
   HeartHandshake,
   TrendingUp,
   Zap,
-  Cpu
+  Cpu,
+  Users
 } from 'lucide-react';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
@@ -140,18 +141,29 @@ export default function About() {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-4">
-              <Button asChild variant="default">
-                <Link href="/contact" className="inline-flex items-center gap-2">
-                  Start Your Journey
-                </Link>
+            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <Button asChild size="lg" className="rounded-full shadow-lg shadow-primary-500/20">
+                <Link href="/contact">Let&apos;s Talk Strategy</Link>
               </Button>
-                
-              <Button asChild variant="outline">
-                <Link href="/services" className="inline-flex items-center gap-2">
-                  View Our Services
-                </Link>
-              </Button>
+              
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity,
+                  ease: "easeInOut" 
+                }}
+              >
+                <Button asChild variant="outline" size="lg" className="rounded-full group border-primary-500/50 hover:bg-primary-500/10 transition-all duration-300 relative overflow-hidden">
+                  <Link href="/about/team" className="flex items-center gap-2">
+                    <span className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <Users className="w-5 h-5 text-primary-400 group-hover:scale-110 transition-transform" />
+                    <span className="relative font-semibold">Meet the Team</span>
+                  </Link>
+                </Button>
+              </motion.div>
             </div>
           </motion.div>
 

@@ -34,5 +34,36 @@ export const SERVICES = [
     description: 'User-centered design that delivers exceptional experiences.',
     icon: 'Palette',
     features: ['Prototyping', 'User Testing', 'Design Systems', 'Accessibility']
+  },
+  {
+    title: 'Legal & Energy Consulting',
+    description: 'Specialized legal advisory in energy law, regulatory compliance, and complex negotiations.',
+    icon: 'Gavel',
+    features: ['Energy Law', 'Contract Negotiation', 'Compliance', 'Policy Advisory']
+  }
+];
+
+export const TEAM = [
+  {
+    name: 'Samuel Kojo Amissah',
+    role: 'Founder & Lead Developer',
+    description: 'Visionary behind CodeWave, specializing in cloud architecture and modern web ecosystems.',
+    image: '/KOJO.png', // Placeholder for now
+    skills: ['Fullstack', 'Cloud Architecture', 'Product Strategy'],
+    social: {
+      linkedin: 'https://linkedin.com/in/samuelamissah',
+      github: 'https://github.com/samuelamissah'
+    }
+  },
+  {
+    name: 'Emmanuella Adamley', 
+    role: 'Chief Legal Counsel & Energy Consultant',
+    description: 'LLM in Energy Law. Expert in regulatory frameworks, energy policy, and strategic negotiations.',
+    image: '/ella (2).png', 
+    skills: ['Energy Law', 'Negotiation', 'Policy Strategy', 'Legal Compliance'],
+    social: {
+      linkedin: '#',
+      twitter: '#'
+    }
   }
 ];

@@ -9,7 +9,9 @@ import {
   BarChart, 
   Palette,
   Zap,
-  Shield
+  Shield,
+  Gavel,
+  Scale
 } from 'lucide-react';
 import Container from '@/components/ui/Container';
 
@@ -41,6 +43,13 @@ const services = [
     description: 'Comprehensive strategies to modernize your business processes and technology stack.',
     features: ['Process Optimization', 'Legacy System Migration', 'Digital Strategy', 'Change Management'],
     color: 'from-yellow-500 to-amber-500'
+  },
+  {
+    icon: <Gavel className="w-8 h-8" />,
+    title: 'Legal & Energy Consulting',
+    description: 'Specialized legal advisory in energy law, regulatory compliance, and complex negotiations.',
+    features: ['Energy Law', 'Contract Negotiation', 'Compliance', 'Policy Advisory'],
+    color: 'from-emerald-500 to-teal-500'
   },
 ];
 
