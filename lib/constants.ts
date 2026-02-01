@@ -56,7 +56,7 @@ export const TEAM = [
     }
   },
   {
-    name: 'Emmanuella Adamley', 
+    name: 'Emmanuella Adamaley', 
     role: 'Chief Legal Counsel & Energy Consultant',
     description: 'LLM in Energy Law. Expert in regulatory frameworks, energy policy, and strategic negotiations.',
     image: '/ella (2).png', 
